@@ -10,7 +10,15 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-
+.flo{
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    background: radial-gradient(circle, #b300ff, #b400a5);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
 /* Letter Container *//* filepath: /c:/Users/Mohammed Faizan/Desktop/IDEA/style.css */
 .letter-container {
     max-height: 400px;
