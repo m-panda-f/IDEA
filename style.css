@@ -409,7 +409,7 @@ body {
 
     .main {
         min-width: 400px; /* Reduce width for smaller screens */
-        min-height: 600px;
+        min-height: 900px;
         flex-direction: column;
         align-items: center;
     }
