@@ -10,6 +10,30 @@ body {
     height: 100vh;
     overflow: hidden;
 }
+.love {
+    z-index: 1;
+    position: fixed;
+    top: 10%;
+    overflow: hidden;
+    font-size: 2em;
+    color: #ff0000;
+    text-align: center;
+
+    font-family: 'Cursive', sans-serif;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
 nav {
          
          
@@ -431,6 +455,10 @@ nav {
         top: 10px;
         left: 10px;
         margin-bottom: 20px;
+    }
+    .love{
+        position: fixed;
+        top: 5%;
     }
     .flo1{
         padding: 5px 10px;
