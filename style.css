@@ -408,8 +408,8 @@ body {
     }
 
     .main {
-        min-width: 300px; /* Reduce width for smaller screens */
-        min-height: 400px;
+        min-width: 400px; /* Reduce width for smaller screens */
+        min-height: 600px;
         flex-direction: column;
         align-items: center;
     }
