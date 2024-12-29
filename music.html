@@ -163,22 +163,15 @@
 
     <script>
         const songs = [
-            {title: "Maan Meri Jaan", src: "music/King - Maan Meri Jaan.mp3" },
-            {title:"Saiyan Dil mein aana re", src:"music/Saiyan-Dil-Me-Aana-Re-Aake-Phir-Na-Jana-Re_192(PagalWorldl).mp3"},
-            {title:"Ban Ja Tu Meri Rani", src:"music/Ban Ja Rani (From _Tumhari Sulu_).mp3"},
-            {title:"Channa Ve",src:"music/Channa Ve - From _Bhoot - Part One_ The Haunted Ship_.mp3"},
-
-            {title:"Chashni",src:"music/Chashni (From _Bharat_).mp3"},
-            {title:"Chedkhaniyaan",src:"music/Chedkhaniyaan.mp3"},
-            {title:"Enna Sona",src:"music/Enna Sona.mp3"},
-            {title:"Hua Main",src:"music/Hua Main (From _ANIMAL_).mp3"},
-            {title:"Janam Janam",src:"music/Janam Janam.mp3"},
-            {title:"Jeena Jeena",src:"music/Jeena Jeena.mp3"},
-            {title:"Nazar Na Lag Jaaye",src:"music/Nazar Na Lag Jaaye (From _Stree_).mp3"},
-            {title:"Subhanallah",src:"music/Subhanallah.mp3"},
-            {title:"Tum Ho Mera Pyar",src:"music/Tum Ho Mera Pyar.mp3"}
+            { title: "Lag ja gale", src: "music/13 Lag jaa Gale - SANAM.mp3" },
+            { title: "Mann Bharryaa", src: "music/Mann Bharryaa 2.0  Official Video  Shershaah  Sidharth  Kiara  B Praak  Jaani.mp3" },
+            { title: "Jab koi baat", src: "music/Jab Koi Baat Lyrics   Atif Aslam   shirley setia   RB Lyrics.mp3" },
+            { title: "Aap ki Nazron ne Samjha ", src: "music/Aap Ki Nazron Ne Samjha  Sanam.mp3" },
+            { title: "Bulleya listen at 1:04 minutes", src: "music/Lyrical  Bulleya Song with Lyrics  Sultan  Salman, Anushka, Vishal & Shekhar, Irshad Kamil, Papon.mp3" },
+            { title: "Apna Bana le", src: "music/Arijit Singh - Apna Bana Le (Lyrics).mp3" },
+            { title: "Raabta", src: "music/Arijit Singh - Raabta (Lyrics Video) Agent Vinod  Saif Ali Khan , Kareena Kapoor Khan..mp3" }
         ];
-
+    
         const audioPlayer = document.getElementById('audio-player');
         const songTitle = document.getElementById('song-title');
         const progressBar = document.getElementById('progress-bar');
@@ -188,16 +181,16 @@
         const playPauseBtn = document.getElementById('play-pause-btn');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
-
+    
         let currentSongIndex = 0;
         let isPlaying = false;
-
+    
         function loadSong(index) {
             const song = songs[index];
             audioPlayer.src = song.src;
             songTitle.textContent = song.title;
         }
-
+    
         function playPauseSong() {
             if (isPlaying) {
                 audioPlayer.pause();
@@ -207,39 +200,42 @@
             isPlaying = !isPlaying;
             playPauseBtn.textContent = isPlaying ? '❚❚' : '▶';
         }
-
+    
         function updateProgress() {
             const { currentTime, duration } = audioPlayer;
             progress.style.width = `${(currentTime / duration) * 100}%`;
             currentTimeDisplay.textContent = formatTime(currentTime);
             totalDurationDisplay.textContent = formatTime(duration);
         }
-
+    
         function formatTime(time) {
             const minutes = Math.floor(time / 60) || 0;
             const seconds = Math.floor(time % 60) || 0;
             return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
         }
-
+    
         function setProgress(e) {
             const width = progressBar.clientWidth;
             const clickX = e.offsetX;
             const duration = audioPlayer.duration;
             audioPlayer.currentTime = (clickX / width) * duration;
         }
-
+    
         function prevSong() {
             currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
             loadSong(currentSongIndex);
             if (isPlaying) audioPlayer.play();
         }
-
+    
         function nextSong() {
             currentSongIndex = (currentSongIndex + 1) % songs.length;
             loadSong(currentSongIndex);
             if (isPlaying) audioPlayer.play();
         }
-
+    
+        // Add event listener for song end to play the next song
+        audioPlayer.addEventListener('ended', nextSong);
+    
         playPauseBtn.addEventListener('click', playPauseSong);
         prevBtn.addEventListener('click', prevSong);
         nextBtn.addEventListener('click', nextSong);
@@ -248,9 +244,10 @@
         audioPlayer.addEventListener('loadedmetadata', () => {
             totalDurationDisplay.textContent = formatTime(audioPlayer.duration);
         });
-
+    
         // Initialize the first song
         loadSong(currentSongIndex);
     </script>
+    
 </body>
 </html>
